@@ -19,11 +19,11 @@ namespace Quiz
                 MessageBox.Show("Bitte Benutznerme und Passwort eingeben!");
             }
 
-            Benutzer b = db.benutzerUeberpruefen(username, passwort);
-            if (b != null)
+            Benutzer benutzer = db.benutzerUeberpruefen(username, passwort);
+            if (benutzer != null)
             {
                 this.Hide();
-                Form2 form2 = new Form2();
+                Form2 form2 = new Form2(benutzer);
                 form2.Show();
             }
             else

@@ -92,6 +92,7 @@
             buttonBeenden.TabIndex = 18;
             buttonBeenden.Text = "Beenden";
             buttonBeenden.UseVisualStyleBackColor = true;
+            buttonBeenden.Click += buttonBeenden_Click;
             // 
             // buttonPruefen
             // 
@@ -101,6 +102,7 @@
             buttonPruefen.TabIndex = 17;
             buttonPruefen.Text = "Pruefen";
             buttonPruefen.UseVisualStyleBackColor = true;
+            buttonPruefen.Click += buttonPruefen_Click;
             // 
             // labelScore
             // 
