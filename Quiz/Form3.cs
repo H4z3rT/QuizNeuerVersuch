@@ -84,6 +84,12 @@ namespace Quiz
             //frage in labelFrage anzeigen
             labelFrage.Text = frage.Fragetext;
 
+
+            // DEBUG: Prüfe Spielmodus
+            MessageBox.Show($"DEBUG: Aktueller Spielmodus: '{spielmodus}'\n" +
+                           $"EndsWith('_zu_Flagge'): {spielmodus.EndsWith("_zu_Flagge")}");
+
+
             //flagge anzeigen wenn spielmodus flagge beinhaltet
             if (spielmodus.StartsWith("Flagge_"))
             {
@@ -114,6 +120,13 @@ namespace Quiz
             //antworten in random reihenfolge bringen
             Random rnd = new Random();
             antworten = antworten.OrderBy(x => rnd.Next()).ToList();
+
+
+            // DEBUG: Zeige Antworten
+            string antwortenText = string.Join(", ", antworten);
+            MessageBox.Show($"DEBUG: Antworten: {antwortenText}");
+
+
 
             //pruefen ob flaggen als antwort angezeigt werden muesssen
             if (spielmodus.EndsWith("_zu_Flagge"))
@@ -152,6 +165,9 @@ namespace Quiz
 
         private void zeigeFlaggenAntworten(List<string> antworten)
         {
+            MessageBox.Show("DEBUG: zeigeFlaggenAntworten wurde aufgerufen!");
+
+
             //text labels deaktivieren
             labelAntwortA.Visible = false;
             labelAntwortB.Visible = false;
@@ -173,23 +189,47 @@ namespace Quiz
             pictureBoxAntwortC.Visible = true;
             pictureBoxAntwortD.Visible = true;
 
+            MessageBox.Show("DEBUG: PictureBoxes wurden sichtbar gemacht");
+
+
         }
 
         private void ladeFlaggeInPictureBox(string landName, PictureBox pictureBox)
         {
             string flaggenDatei = flaggenPfad + landName + ".png";
 
-            // DEBUG: Diese Zeilen temporär hinzufügen
-    MessageBox.Show($"Suche nach Datei: {flaggenDatei}");
-    MessageBox.Show($"Datei existiert: {File.Exists(flaggenDatei)}");
+            // ERWEITERTE DEBUG-AUSGABE
+            MessageBox.Show($"DEBUG Info:\n" +
+                           $"Übergebener Landname: '{landName}'\n" +
+                           $"Konstruierter Pfad: '{flaggenDatei}'\n" +
+                           $"Datei existiert: {File.Exists(flaggenDatei)}\n" +
+                           $"Flaggen-Ordner existiert: {Directory.Exists(flaggenPfad)}");
+
             if (File.Exists(flaggenDatei))
             {
-                pictureBox.Image = Image.FromFile(flaggenDatei);
-                pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                try
+                {
+                    pictureBox.Image = Image.FromFile(flaggenDatei);
+                    pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                    MessageBox.Show($"Flagge erfolgreich geladen: {landName}");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Fehler beim Laden der Flagge: {ex.Message}");
+                    pictureBox.Image = null;
+                }
             }
             else
             {
-                //wenn flagge nicht gefunden wurde
+                // Zeige verfügbare Dateien im Flaggen-Ordner
+                if (Directory.Exists(flaggenPfad))
+                {
+                    string[] dateien = Directory.GetFiles(flaggenPfad, "*.png");
+                    string dateiListe = string.Join("\n", dateien.Select(f => Path.GetFileNameWithoutExtension(f)));
+                    MessageBox.Show($"Flagge nicht gefunden!\n" +
+                                   $"Gesuchte Datei: {landName}.png\n\n" +
+                                   $"Verfügbare Flaggen:\n{dateiListe}");
+                }
                 pictureBox.Image = null;
             }
         }
