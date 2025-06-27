@@ -49,7 +49,7 @@ namespace Quiz
                 labelHighscore.Text = "Highscore: " + highscore + " Punkte";
             }
 
-            // Event-Handler für Start-Button hinzufügen
+            
             buttonStart.Click += buttonStart_Click;
         }
 
@@ -74,7 +74,7 @@ namespace Quiz
         }
 
         
-
+        //ausloggen button oeffnet form1 (login)
         private void buttonAusloggen_Click(object sender, EventArgs e)
         {
             this.Close();

@@ -58,8 +58,14 @@ namespace Quiz
 
 
 
-            private void zeigeFrage()
+        private void zeigeFrage()
         {
+            //RadioButtons deaktivieren
+            radioButtonA.Checked = false;
+            radioButtonB.Checked = false;
+            radioButtonC.Checked = false;
+            radioButtonD.Checked = false;
+
             if (aktuelleFrage >= fragen.Count)
             {
                 beendeQuiz();
@@ -68,16 +74,12 @@ namespace Quiz
 
             QuizFrage frage = fragen[aktuelleFrage];
 
-            // Frage anzeigen
+            //frage in labelFrage anzeigen
             labelFrage.Text = frage.Fragetext;
 
-            // Alle RadioButtons deaktivieren
-            radioButtonA.Checked = false;
-            radioButtonB.Checked = false;
-            radioButtonC.Checked = false;
-            radioButtonD.Checked = false;
+            
 
-            // Flagge anzeigen, falls erforderlich
+            //flagge anzeigen wenn spielmodus flagge beinhaltet
             if (spielmodus.StartsWith("Flagge_"))
             {
                 string flaggenDatei = flaggenPfad + frage.RichtigeAntwort + ".png";
@@ -98,18 +100,18 @@ namespace Quiz
                 pictureBoxFrage.Visible = false;
             }
 
-            // Antwortmöglichkeiten generieren und anzeigen
+            //antworten erstellen und anzeigen
             List<string> antworten = new List<string>();
             antworten.Add(frage.RichtigeAntwort);
             antworten.Add(frage.FalscheAntwort1);
             antworten.Add(frage.FalscheAntwort2);
             antworten.Add(frage.FalscheAntwort3);
 
-            // Antworten mischen
+            //antworten in random reihenfolge bringen
             Random rnd = new Random();
             antworten = antworten.OrderBy(x => rnd.Next()).ToList();
 
-            // Prüfen ob Flaggen als Antworten angezeigt werden sollen
+            //pruefen ob flaggen als antwort angezeigt werden muesssen
             if (spielmodus.EndsWith("_zu_Flagge"))
             {
                 zeigeFlaggenAntworten(antworten);
@@ -124,13 +126,13 @@ namespace Quiz
 
         private void zeigeTextAntworten(List<string> antworten)
         {
-            // PictureBoxes ausblenden
+            //pictureBoxes ausblenden
             pictureBoxAntwortA.Visible = false;
             pictureBoxAntwortB.Visible = false;
             pictureBoxAntwortC.Visible = false;
             pictureBoxAntwortD.Visible = false;
 
-            // Text-Labels anzeigen
+            //text labels anzeigen
             labelAntwortA.Text = antworten[0];
             labelAntwortB.Text = antworten[1];
             labelAntwortC.Text = antworten[2];
@@ -146,22 +148,22 @@ namespace Quiz
 
         private void zeigeFlaggenAntworten(List<string> antworten)
         {
-            // Text-Labels ausblenden
+            //text labels deaktivieren
             labelAntwortA.Visible = false;
             labelAntwortB.Visible = false;
             labelAntwortC.Visible = false;
             labelAntwortD.Visible = false;
 
-            // Flaggen für Antworten laden
+            //flaggen fuer antworten laden
             aktuelleFlaggenAntworten = new List<string>(antworten);
 
-            // Flaggen laden und in PictureBoxes anzeigen
+            //flaggen laden und in pictureBoxes anzeigen
             ladeFlaggeInPictureBox(antworten[0], pictureBoxAntwortA);
             ladeFlaggeInPictureBox(antworten[1], pictureBoxAntwortB);
             ladeFlaggeInPictureBox(antworten[2], pictureBoxAntwortC);
             ladeFlaggeInPictureBox(antworten[3], pictureBoxAntwortD);
 
-            // PictureBoxes sichtbar machen
+            //pictureBoxes sichtbar machen
             pictureBoxAntwortA.Visible = true;
             pictureBoxAntwortB.Visible = true;
             pictureBoxAntwortC.Visible = true;
@@ -180,7 +182,7 @@ namespace Quiz
             }
             else
             {
-                // Fallback: Zeige Text wenn Flagge nicht gefunden wird
+                //wenn flagge nicht gefunden wurde
                 pictureBox.Image = null;
                 MessageBox.Show("Flagge für " + landName + " nicht gefunden: " + flaggenDatei);
             }
@@ -190,7 +192,7 @@ namespace Quiz
 
         private void buttonPruefen_Click(object sender, EventArgs e)
         {
-            // Prüfen welche Antwort ausgewählt wurde
+            //pruefen welche Antwort ausgewaehlt wurde
             string gewaehlteAntwort = "";
 
             if (radioButtonA.Checked)
@@ -203,17 +205,17 @@ namespace Quiz
                 gewaehlteAntwort = "D";
             else
             {
-                MessageBox.Show("Bitte wählen Sie eine Antwort aus!");
-                return;
+                MessageBox.Show("");
+                
             }
 
-            // Richtige Antwort bestimmen
+            //richtige antwort bestimmen
             QuizFrage frage = fragen[aktuelleFrage];
             bool richtig = false;
 
             if (spielmodus.EndsWith("_zu_Flagge"))
             {
-                // Bei Flaggen-Antworten prüfen
+                //pruefe wenn antwort = flaggen 
                 int gewaehlterIndex = getSelectedIndex(gewaehlteAntwort);
                 if (gewaehlterIndex >= 0 && gewaehlterIndex < aktuelleFlaggenAntworten.Count)
                 {
@@ -223,7 +225,7 @@ namespace Quiz
             }
             else
             {
-                // Bei Text-Antworten prüfen
+                //pruefe text antworten
                 string gewaehlterText = "";
                 switch (gewaehlteAntwort)
                 {
@@ -235,7 +237,7 @@ namespace Quiz
                 richtig = gewaehlterText == frage.RichtigeAntwort;
             }
 
-            // Feedback anzeigen
+            //korrekt oder falsch anzeigen
             if (richtig)
             {
                 MessageBox.Show("Korrekt!");
@@ -245,8 +247,12 @@ namespace Quiz
             {
                 MessageBox.Show("Falsch! Die richtige Antwort ist: " + frage.RichtigeAntwort);
             }
+            radioButtonA.Checked = false;
+            radioButtonB.Checked = false;
+            radioButtonC.Checked = false;
+            radioButtonD.Checked = false;
 
-            // Zur nächsten Frage
+            //zur naechsten frage
             aktuelleFrage++;
             updateScoreAnzeige();
             zeigeFrage();
@@ -269,11 +275,14 @@ namespace Quiz
 
         
 
+        //score anzeige aktualisieren
         private void updateScoreAnzeige()
         {
-            labelScore.Text = "Score: " + aktuellerScore + "/" + (aktuelleFrage + 1);
+            labelScore.Text = "Score: " + aktuellerScore + "/10";
         }
 
+
+        //quiz beenden
         private void buttonBeenden_Click(object sender, EventArgs e)
         {
             beendeQuiz();
@@ -282,14 +291,14 @@ namespace Quiz
 
         private void beendeQuiz()
         {
-            // Persönlichen Highscore abrufen
+            //personal highscore abrufen
             int alterHighscore = db.getPersonalHighscore(aktuellerBenutzer.ID);
             int neuerHighscore = Math.Max(alterHighscore, aktuellerScore);
 
-            // Quiz-Ergebnis speichern
+            //quizergebnis speichern
             db.saveQuizScore(aktuellerBenutzer.ID, aktuellerScore, neuerHighscore);
 
-            // Ergebnis anzeigen
+            //ergebnis anzeigen
             string ergebnisText = "Quiz beendet!\n\n";
             ergebnisText += "Ihr Score: " + aktuellerScore + " von " + fragen.Count + " Punkten\n";
 
@@ -302,7 +311,7 @@ namespace Quiz
                 ergebnisText += "Persönlicher Highscore: " + neuerHighscore + " Punkte\n\n";
             }
 
-            // Top 10 Highscores anzeigen
+            //top 10 highscores anzeigen
             List<string> top10 = db.getTopHighscores();
             ergebnisText += "Top 10 Highscores:\n";
             foreach (string eintrag in top10)
@@ -312,7 +321,7 @@ namespace Quiz
 
             MessageBox.Show(ergebnisText, "Quiz-Ergebnis");
 
-            // Zurück zu Form2
+            //form3 schliessen udn form 2 oeffnen
             Form2 form2 = new Form2(aktuellerBenutzer);
             form2.Show();
             this.Close();

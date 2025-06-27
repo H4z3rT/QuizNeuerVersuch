@@ -113,17 +113,17 @@ namespace Quiz
 
                 if (region == "Weltweit")
                 {
-                    query = string.Format("SELECT g.geodatenID, g.kontinent, g.land, g.hauptstadt, g.flagge, " +
-                        "f.fragenID, f.fragetyp FROM geodaten g " +
-                        "JOIN frage f ON g.geodatenID = f.GDID " +
+                    query = string.Format("SELECT g.GeoDatenID, g.kontinent, g.land, g.hauptstadt, g.flagge, " +
+                        "f.frageID, f.fragetyp FROM geodaten g " +
+                        "JOIN frage f ON g.GeoDatenID = f.GDID " +
                         "WHERE f.fragetyp = '{0}' ORDER BY RAND() LIMIT {1}",
                         spielmodus, anzahl);
                 }
                 else
                 {
-                    query = string.Format("SELECT g.geodatenID, g.kontinent, g.land, g.hauptstadt, g.flagge, " +
-                        "f.fragenID, f.fragetyp FROM geodaten g " +
-                        "JOIN frage f ON g.geodatenID = f.GDID " +
+                    query = string.Format("SELECT g.GeoDatenID, g.kontinent, g.land, g.hauptstadt, g.flagge, " +
+                        "f.frageID, f.fragetyp FROM GeoDaten g " +
+                        "JOIN frage f ON g.GeoDatenID = f.GDID " +
                         "WHERE f.fragetyp = '{0}' AND g.kontinent = '{1}' ORDER BY RAND() LIMIT {2}",
                         spielmodus, region, anzahl);
                 }
@@ -177,7 +177,7 @@ namespace Quiz
                     }
 
                     QuizFrage frage = new QuizFrage(
-                        reader.GetInt32("geodatenID"),
+                        reader.GetInt32("GeoDatenID"),
                         fragetext,
                         richtigeAntwort,
                         "", "", "", //falschen antworten noch hinzufuegen!

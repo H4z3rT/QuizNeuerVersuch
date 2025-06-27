@@ -48,9 +48,11 @@
             groupBoxSpielmodus.Controls.Add(comboBoxSpielmodus);
             groupBoxSpielmodus.Controls.Add(buttonAusloggen);
             groupBoxSpielmodus.Controls.Add(buttonStart);
-            groupBoxSpielmodus.Location = new Point(12, 12);
+            groupBoxSpielmodus.Location = new Point(22, 26);
+            groupBoxSpielmodus.Margin = new Padding(6, 6, 6, 6);
             groupBoxSpielmodus.Name = "groupBoxSpielmodus";
-            groupBoxSpielmodus.Size = new Size(260, 238);
+            groupBoxSpielmodus.Padding = new Padding(6, 6, 6, 6);
+            groupBoxSpielmodus.Size = new Size(623, 508);
             groupBoxSpielmodus.TabIndex = 0;
             groupBoxSpielmodus.TabStop = false;
             groupBoxSpielmodus.Text = "Spielmodus";
@@ -58,51 +60,57 @@
             // labelHighscore
             // 
             labelHighscore.AutoSize = true;
-            labelHighscore.Location = new Point(108, 19);
+            labelHighscore.Location = new Point(201, 41);
+            labelHighscore.Margin = new Padding(6, 0, 6, 0);
             labelHighscore.Name = "labelHighscore";
-            labelHighscore.Size = new Size(64, 15);
+            labelHighscore.Size = new Size(126, 32);
             labelHighscore.TabIndex = 6;
             labelHighscore.Text = "Highscore:";
             // 
             // comboBoxQuizregion
             // 
             comboBoxQuizregion.FormattingEnabled = true;
-            comboBoxQuizregion.Location = new Point(108, 102);
+            comboBoxQuizregion.Location = new Point(201, 218);
+            comboBoxQuizregion.Margin = new Padding(6, 6, 6, 6);
             comboBoxQuizregion.Name = "comboBoxQuizregion";
-            comboBoxQuizregion.Size = new Size(120, 23);
+            comboBoxQuizregion.Size = new Size(219, 40);
             comboBoxQuizregion.TabIndex = 5;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(6, 102);
+            label2.Location = new Point(11, 218);
+            label2.Margin = new Padding(6, 0, 6, 0);
             label2.Name = "label2";
-            label2.Size = new Size(65, 15);
+            label2.Size = new Size(132, 32);
             label2.TabIndex = 4;
             label2.Text = "Quizregion";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(6, 53);
+            label1.Location = new Point(11, 113);
+            label1.Margin = new Padding(6, 0, 6, 0);
             label1.Name = "label1";
-            label1.Size = new Size(69, 15);
+            label1.Size = new Size(139, 32);
             label1.TabIndex = 3;
             label1.Text = "Spielmodus";
             // 
             // comboBoxSpielmodus
             // 
             comboBoxSpielmodus.FormattingEnabled = true;
-            comboBoxSpielmodus.Location = new Point(108, 50);
+            comboBoxSpielmodus.Location = new Point(201, 107);
+            comboBoxSpielmodus.Margin = new Padding(6, 6, 6, 6);
             comboBoxSpielmodus.Name = "comboBoxSpielmodus";
-            comboBoxSpielmodus.Size = new Size(120, 23);
+            comboBoxSpielmodus.Size = new Size(331, 40);
             comboBoxSpielmodus.TabIndex = 2;
             // 
             // buttonAusloggen
             // 
-            buttonAusloggen.Location = new Point(142, 183);
+            buttonAusloggen.Location = new Point(264, 390);
+            buttonAusloggen.Margin = new Padding(6, 6, 6, 6);
             buttonAusloggen.Name = "buttonAusloggen";
-            buttonAusloggen.Size = new Size(86, 31);
+            buttonAusloggen.Size = new Size(160, 66);
             buttonAusloggen.TabIndex = 1;
             buttonAusloggen.Text = "Ausloggen";
             buttonAusloggen.UseVisualStyleBackColor = true;
@@ -110,9 +118,10 @@
             // 
             // buttonStart
             // 
-            buttonStart.Location = new Point(6, 183);
+            buttonStart.Location = new Point(11, 390);
+            buttonStart.Margin = new Padding(6, 6, 6, 6);
             buttonStart.Name = "buttonStart";
-            buttonStart.Size = new Size(86, 31);
+            buttonStart.Size = new Size(160, 66);
             buttonStart.TabIndex = 0;
             buttonStart.Text = "Start";
             buttonStart.UseVisualStyleBackColor = true;
@@ -120,10 +129,11 @@
             // 
             // Form2
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(286, 258);
+            ClientSize = new Size(681, 550);
             Controls.Add(groupBoxSpielmodus);
+            Margin = new Padding(6, 6, 6, 6);
             Name = "Form2";
             Text = "Form2";
             groupBoxSpielmodus.ResumeLayout(false);

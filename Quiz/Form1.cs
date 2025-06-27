@@ -8,7 +8,7 @@ namespace Quiz
         {
             InitializeComponent();
         }
-        //Login SELECT FROM
+        //benutzer einloggen wenn benutzer in DB vorhanden ist
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string username = textBoxUsername.Text.Trim();//Trim entfernt leerzeichen am anfang und ende
@@ -34,7 +34,7 @@ namespace Quiz
 
 
 
-        //Register INSERT INTO
+        //benutzer register wenn nicht bereits in DB vorhanden
         private void btnRegister_Click(object sender, EventArgs e)
         {
             string username = textBoxUsername.Text.Trim();//Trim entfernt Leerzeichen am Anfang und Ende
