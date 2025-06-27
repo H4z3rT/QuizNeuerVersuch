@@ -116,10 +116,7 @@ namespace Quiz
                     pictureBoxFrage.Visible = false;
                 }
             }
-            else
-            {
-                pictureBoxFrage.Visible = false;
-            }
+            
             
 
             //antworten erstellen und anzeigen
@@ -193,7 +190,6 @@ namespace Quiz
             pictureBoxAntwortC.Visible = true;
             pictureBoxAntwortD.Visible = true;
 
-            MessageBox.Show("DEBUG: PictureBoxes wurden sichtbar gemacht");
 
 
         }
@@ -209,7 +205,7 @@ namespace Quiz
                 {
                     pictureBox.Image = Image.FromFile(flaggenDatei);
                     pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-                    MessageBox.Show($"Flagge erfolgreich geladen: {landName}");
+                    //MessageBox.Show($"Flagge erfolgreich geladen: {landName}");
                 }
                 catch (Exception ex)
                 {
@@ -219,15 +215,6 @@ namespace Quiz
             }
             else
             {
-                // Zeige verfügbare Dateien im Flaggen-Ordner
-                if (Directory.Exists(flaggenPfad))
-                {
-                    string[] dateien = Directory.GetFiles(flaggenPfad, "*.png");
-                    string dateiListe = string.Join("\n", dateien.Select(f => Path.GetFileNameWithoutExtension(f)));
-                    MessageBox.Show($"Flagge nicht gefunden!\n" +
-                                   $"Gesuchte Datei: {landName}.png\n\n" +
-                                   $"Verfügbare Flaggen:\n{dateiListe}");
-                }
                 pictureBox.Image = null;
             }
         }
@@ -292,11 +279,7 @@ namespace Quiz
             {
                 MessageBox.Show("Falsch! Die richtige Antwort ist: " + frage.RichtigeAntwort);
             }
-            /*radioButtonA.Checked = false;
-            radioButtonB.Checked = false;
-            radioButtonC.Checked = false;
-            radioButtonD.Checked = false;
-            */
+            
 
             //zur naechsten frage
             aktuelleFrage++;
