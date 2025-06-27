@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Quiz
 {
@@ -60,11 +61,19 @@ namespace Quiz
 
         private void zeigeFrage()
         {
-            //RadioButtons deaktivieren
+            //radioButtons deaktivieren
             radioButtonA.Checked = false;
             radioButtonB.Checked = false;
             radioButtonC.Checked = false;
             radioButtonD.Checked = false;
+
+            //radioButtons sollen nicht autmatisch ausgewaehlt werden
+            radioButtonA.AutoCheck = true;
+            radioButtonB.AutoCheck = true;
+            radioButtonC.AutoCheck = true;
+            radioButtonD.AutoCheck = true;
+
+
 
             if (aktuelleFrage >= fragen.Count)
             {
@@ -76,8 +85,6 @@ namespace Quiz
 
             //frage in labelFrage anzeigen
             labelFrage.Text = frage.Fragetext;
-
-            
 
             //flagge anzeigen wenn spielmodus flagge beinhaltet
             if (spielmodus.StartsWith("Flagge_"))
@@ -91,8 +98,7 @@ namespace Quiz
                 }
                 else 
                 {
-                    pictureBoxFrage.Visible = false;
-                    MessageBox.Show("Flagge für die Frage nicht gefunden!");   
+                    pictureBoxFrage.Visible = false;  
                 }
             }
             else
@@ -184,7 +190,6 @@ namespace Quiz
             {
                 //wenn flagge nicht gefunden wurde
                 pictureBox.Image = null;
-                MessageBox.Show("Flagge für " + landName + " nicht gefunden: " + flaggenDatei);
             }
         }
 
@@ -205,7 +210,8 @@ namespace Quiz
                 gewaehlteAntwort = "D";
             else
             {
-                MessageBox.Show("");
+                MessageBox.Show("Bitte Antwort auswaehlen!");
+                return;
                 
             }
 
