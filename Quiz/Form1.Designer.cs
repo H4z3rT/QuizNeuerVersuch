@@ -46,18 +46,21 @@
             groupBoxLogin.Controls.Add(label2);
             groupBoxLogin.Controls.Add(label1);
             groupBoxLogin.Controls.Add(textBoxUsername);
-            groupBoxLogin.Location = new Point(12, 12);
+            groupBoxLogin.Location = new Point(22, 26);
+            groupBoxLogin.Margin = new Padding(6, 6, 6, 6);
             groupBoxLogin.Name = "groupBoxLogin";
-            groupBoxLogin.Size = new Size(279, 217);
+            groupBoxLogin.Padding = new Padding(6, 6, 6, 6);
+            groupBoxLogin.Size = new Size(518, 463);
             groupBoxLogin.TabIndex = 0;
             groupBoxLogin.TabStop = false;
             groupBoxLogin.Text = "Login";
             // 
             // buttonRegister
             // 
-            buttonRegister.Location = new Point(146, 138);
+            buttonRegister.Location = new Point(271, 294);
+            buttonRegister.Margin = new Padding(6, 6, 6, 6);
             buttonRegister.Name = "buttonRegister";
-            buttonRegister.Size = new Size(75, 23);
+            buttonRegister.Size = new Size(139, 49);
             buttonRegister.TabIndex = 5;
             buttonRegister.Text = "Register";
             buttonRegister.UseVisualStyleBackColor = true;
@@ -65,9 +68,10 @@
             // 
             // buttonLogin
             // 
-            buttonLogin.Location = new Point(26, 138);
+            buttonLogin.Location = new Point(48, 294);
+            buttonLogin.Margin = new Padding(6, 6, 6, 6);
             buttonLogin.Name = "buttonLogin";
-            buttonLogin.Size = new Size(75, 23);
+            buttonLogin.Size = new Size(139, 49);
             buttonLogin.TabIndex = 4;
             buttonLogin.Text = "Login";
             buttonLogin.UseVisualStyleBackColor = true;
@@ -75,42 +79,48 @@
             // 
             // textBoxPasswort
             // 
-            textBoxPasswort.Location = new Point(121, 90);
+            textBoxPasswort.Location = new Point(225, 192);
+            textBoxPasswort.Margin = new Padding(6, 6, 6, 6);
             textBoxPasswort.Name = "textBoxPasswort";
-            textBoxPasswort.Size = new Size(100, 23);
+            textBoxPasswort.Size = new Size(182, 39);
             textBoxPasswort.TabIndex = 3;
+            textBoxPasswort.UseSystemPasswordChar = true;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(26, 93);
+            label2.Location = new Point(48, 198);
+            label2.Margin = new Padding(6, 0, 6, 0);
             label2.Name = "label2";
-            label2.Size = new Size(57, 15);
+            label2.Size = new Size(110, 32);
             label2.TabIndex = 2;
             label2.Text = "Passwort:";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(26, 51);
+            label1.Location = new Point(48, 109);
+            label1.Margin = new Padding(6, 0, 6, 0);
             label1.Name = "label1";
-            label1.Size = new Size(63, 15);
+            label1.Size = new Size(126, 32);
             label1.TabIndex = 1;
             label1.Text = "Username:";
             // 
             // textBoxUsername
             // 
-            textBoxUsername.Location = new Point(121, 48);
+            textBoxUsername.Location = new Point(225, 102);
+            textBoxUsername.Margin = new Padding(6, 6, 6, 6);
             textBoxUsername.Name = "textBoxUsername";
-            textBoxUsername.Size = new Size(100, 23);
+            textBoxUsername.Size = new Size(182, 39);
             textBoxUsername.TabIndex = 0;
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(303, 239);
+            ClientSize = new Size(563, 510);
             Controls.Add(groupBoxLogin);
+            Margin = new Padding(6, 6, 6, 6);
             Name = "Form1";
             Text = "Form1";
             groupBoxLogin.ResumeLayout(false);

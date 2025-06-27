@@ -50,7 +50,6 @@ namespace Quiz
             }
 
             
-            buttonStart.Click += buttonStart_Click;
         }
 
 

@@ -244,7 +244,7 @@ namespace Quiz
                     query = string.Format("SELECT {0} FROM geodaten WHERE {0} != '{1}' ORDER BY RAND() LIMIT 3",
                         spalte, frage.RichtigeAntwort);
                 }
-    
+                else
                 {
                     query = string.Format("SELECT {0} FROM geodaten WHERE {0} != '{1}' AND kontinent = '{2}' ORDER BY RAND() LIMIT 3",
                         spalte, frage.RichtigeAntwort, region);

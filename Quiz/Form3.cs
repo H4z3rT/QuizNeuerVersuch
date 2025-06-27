@@ -39,8 +39,6 @@ namespace Quiz
 
         private void ladeQuiz()
         {
-            buttonPruefen.Click += buttonPruefen_Click;
-            buttonBeenden.Click += buttonBeenden_Click;
 
             fragen = db.getQuizFragen(spielmodus, region, 10);
 
@@ -181,7 +179,9 @@ namespace Quiz
         {
             string flaggenDatei = flaggenPfad + landName + ".png";
 
-
+            // DEBUG: Diese Zeilen temporär hinzufügen
+    MessageBox.Show($"Suche nach Datei: {flaggenDatei}");
+    MessageBox.Show($"Datei existiert: {File.Exists(flaggenDatei)}");
             if (File.Exists(flaggenDatei))
             {
                 pictureBox.Image = Image.FromFile(flaggenDatei);
