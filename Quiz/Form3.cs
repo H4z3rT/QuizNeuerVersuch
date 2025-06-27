@@ -85,30 +85,42 @@ namespace Quiz
             labelFrage.Text = frage.Fragetext;
 
 
-            // DEBUG: Prüfe Spielmodus
-            MessageBox.Show($"DEBUG: Aktueller Spielmodus: '{spielmodus}'\n" +
-                           $"EndsWith('_zu_Flagge'): {spielmodus.EndsWith("_zu_Flagge")}");
-
-
+            //flagge anzeigen wenn spielmodus flagge beinhaltet
             //flagge anzeigen wenn spielmodus flagge beinhaltet
             if (spielmodus.StartsWith("Flagge_"))
             {
-                string flaggenDatei = flaggenPfad + frage.RichtigeAntwort + ".png";
-                if (File.Exists(flaggenDatei))
+                if (frage.Flagge != null && frage.Flagge.Length > 0)
                 {
-                    pictureBoxFrage.Image = Image.FromFile(flaggenDatei);
-                    pictureBoxFrage.SizeMode = PictureBoxSizeMode.StretchImage;
-                    pictureBoxFrage.Visible = true;
+                    try
+                    {
+                        // Kopie der Daten erstellen und dann Image laden
+                        byte[] imageData = new byte[frage.Flagge.Length];
+                        Array.Copy(frage.Flagge, imageData, frage.Flagge.Length);
+
+                        using (var ms = new MemoryStream(imageData))
+                        {
+                            pictureBoxFrage.Image = new Bitmap(ms);
+                            pictureBoxFrage.SizeMode = PictureBoxSizeMode.StretchImage;
+                            pictureBoxFrage.Visible = true;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Fehler beim Laden der Flagge aus Datenbank: {ex.Message}");
+                        pictureBoxFrage.Visible = false;
+                    }
                 }
-                else 
+                else
                 {
-                    pictureBoxFrage.Visible = false;  
+                    MessageBox.Show("Keine Flagge in der Datenbank gefunden!");
+                    pictureBoxFrage.Visible = false;
                 }
             }
             else
             {
                 pictureBoxFrage.Visible = false;
             }
+            
 
             //antworten erstellen und anzeigen
             List<string> antworten = new List<string>();
