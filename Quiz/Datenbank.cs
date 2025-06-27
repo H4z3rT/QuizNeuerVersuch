@@ -418,5 +418,39 @@ namespace Quiz
             conn.Close();
             return falscheFlaggen;
         }
+
+        // Flaggen-Dateiname aus BLOB-Spalte als Text auslesen
+        public string getFlaggenName(int geodatenID)
+        {
+            conn.Open();
+            string flaggenName = null;
+            try
+            {
+                MySqlCommand cmd = conn.CreateCommand();
+                cmd.CommandText = string.Format("SELECT flagge FROM geodaten WHERE geodatenID = {0}", geodatenID);
+                object result = cmd.ExecuteScalar();
+
+                if (result != DBNull.Value && result != null)
+                {
+                    if (result is byte[])
+                    {
+                        // BLOB-Daten als Text interpretieren
+                        byte[] nameBytes = (byte[])result;
+                        flaggenName = System.Text.Encoding.UTF8.GetString(nameBytes).Trim();
+                    }
+                    else if (result is string)
+                    {
+                        // Falls als String ausgelesen
+                        flaggenName = (string)result;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Fehler beim Laden des Flaggen-Namens: {ex.Message}");
+            }
+            conn.Close();
+            return flaggenName;
+        }
     }
 }

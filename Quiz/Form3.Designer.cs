@@ -77,18 +77,21 @@
             groupBox1.Controls.Add(radioButtonB);
             groupBox1.Controls.Add(radioButtonA);
             groupBox1.Controls.Add(label10);
-            groupBox1.Location = new Point(12, 12);
+            groupBox1.Location = new Point(22, 26);
+            groupBox1.Margin = new Padding(6);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(391, 325);
+            groupBox1.Padding = new Padding(6);
+            groupBox1.Size = new Size(849, 693);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Fragen";
             // 
             // buttonBeenden
             // 
-            buttonBeenden.Location = new Point(273, 281);
+            buttonBeenden.Location = new Point(542, 600);
+            buttonBeenden.Margin = new Padding(6);
             buttonBeenden.Name = "buttonBeenden";
-            buttonBeenden.Size = new Size(75, 23);
+            buttonBeenden.Size = new Size(139, 49);
             buttonBeenden.TabIndex = 18;
             buttonBeenden.Text = "Beenden";
             buttonBeenden.UseVisualStyleBackColor = true;
@@ -96,9 +99,10 @@
             // 
             // buttonPruefen
             // 
-            buttonPruefen.Location = new Point(151, 281);
+            buttonPruefen.Location = new Point(280, 599);
+            buttonPruefen.Margin = new Padding(6);
             buttonPruefen.Name = "buttonPruefen";
-            buttonPruefen.Size = new Size(75, 23);
+            buttonPruefen.Size = new Size(139, 49);
             buttonPruefen.TabIndex = 17;
             buttonPruefen.Text = "Pruefen";
             buttonPruefen.UseVisualStyleBackColor = true;
@@ -107,106 +111,119 @@
             // labelScore
             // 
             labelScore.AutoSize = true;
-            labelScore.Location = new Point(17, 285);
+            labelScore.Location = new Point(32, 608);
+            labelScore.Margin = new Padding(6, 0, 6, 0);
             labelScore.Name = "labelScore";
-            labelScore.Size = new Size(39, 15);
+            labelScore.Size = new Size(78, 32);
             labelScore.TabIndex = 16;
             labelScore.Text = "Score:";
             // 
             // labelFrage
             // 
             labelFrage.AutoSize = true;
-            labelFrage.Location = new Point(67, 42);
+            labelFrage.Location = new Point(124, 90);
+            labelFrage.Margin = new Padding(6, 0, 6, 0);
             labelFrage.Name = "labelFrage";
-            labelFrage.Size = new Size(0, 15);
+            labelFrage.Size = new Size(0, 32);
             labelFrage.TabIndex = 15;
             // 
             // labelAntwortD
             // 
             labelAntwortD.AutoSize = true;
-            labelAntwortD.Location = new Point(248, 208);
+            labelAntwortD.Location = new Point(542, 444);
+            labelAntwortD.Margin = new Padding(6, 0, 6, 0);
             labelAntwortD.Name = "labelAntwortD";
-            labelAntwortD.Size = new Size(0, 15);
+            labelAntwortD.Size = new Size(0, 32);
             labelAntwortD.TabIndex = 14;
             // 
             // labelAntwortC
             // 
             labelAntwortC.AutoSize = true;
-            labelAntwortC.Location = new Point(248, 112);
+            labelAntwortC.Location = new Point(542, 239);
+            labelAntwortC.Margin = new Padding(6, 0, 6, 0);
             labelAntwortC.Name = "labelAntwortC";
-            labelAntwortC.Size = new Size(0, 15);
+            labelAntwortC.Size = new Size(0, 32);
             labelAntwortC.TabIndex = 13;
             // 
             // labelAntwortB
             // 
             labelAntwortB.AutoSize = true;
-            labelAntwortB.Location = new Point(61, 210);
+            labelAntwortB.Location = new Point(113, 448);
+            labelAntwortB.Margin = new Padding(6, 0, 6, 0);
             labelAntwortB.Name = "labelAntwortB";
-            labelAntwortB.Size = new Size(0, 15);
+            labelAntwortB.Size = new Size(0, 32);
             labelAntwortB.TabIndex = 12;
             // 
             // labelAntwortA
             // 
             labelAntwortA.AutoSize = true;
-            labelAntwortA.Location = new Point(61, 114);
+            labelAntwortA.Location = new Point(113, 243);
+            labelAntwortA.Margin = new Padding(6, 0, 6, 0);
             labelAntwortA.Name = "labelAntwortA";
-            labelAntwortA.Size = new Size(0, 15);
+            labelAntwortA.Size = new Size(0, 32);
             labelAntwortA.TabIndex = 11;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(61, 42);
+            label1.Location = new Point(113, 90);
+            label1.Margin = new Padding(6, 0, 6, 0);
             label1.Name = "label1";
-            label1.Size = new Size(0, 15);
+            label1.Size = new Size(0, 32);
             label1.TabIndex = 10;
             // 
             // pictureBoxAntwortB
             // 
-            pictureBoxAntwortB.Location = new Point(54, 206);
+            pictureBoxAntwortB.Location = new Point(100, 439);
+            pictureBoxAntwortB.Margin = new Padding(6);
             pictureBoxAntwortB.Name = "pictureBoxAntwortB";
-            pictureBoxAntwortB.Size = new Size(100, 50);
+            pictureBoxAntwortB.Size = new Size(186, 107);
             pictureBoxAntwortB.TabIndex = 9;
             pictureBoxAntwortB.TabStop = false;
             // 
             // pictureBoxAntwortA
             // 
-            pictureBoxAntwortA.Location = new Point(54, 110);
+            pictureBoxAntwortA.Location = new Point(100, 235);
+            pictureBoxAntwortA.Margin = new Padding(6);
             pictureBoxAntwortA.Name = "pictureBoxAntwortA";
-            pictureBoxAntwortA.Size = new Size(100, 50);
+            pictureBoxAntwortA.Size = new Size(186, 107);
             pictureBoxAntwortA.TabIndex = 8;
             pictureBoxAntwortA.TabStop = false;
             // 
             // pictureBoxAntwortD
             // 
-            pictureBoxAntwortD.Location = new Point(248, 206);
+            pictureBoxAntwortD.Location = new Point(542, 439);
+            pictureBoxAntwortD.Margin = new Padding(6);
             pictureBoxAntwortD.Name = "pictureBoxAntwortD";
-            pictureBoxAntwortD.Size = new Size(100, 50);
+            pictureBoxAntwortD.Size = new Size(186, 107);
             pictureBoxAntwortD.TabIndex = 7;
             pictureBoxAntwortD.TabStop = false;
             // 
             // pictureBoxAntwortC
             // 
-            pictureBoxAntwortC.Location = new Point(248, 110);
+            pictureBoxAntwortC.Location = new Point(542, 235);
+            pictureBoxAntwortC.Margin = new Padding(6);
             pictureBoxAntwortC.Name = "pictureBoxAntwortC";
-            pictureBoxAntwortC.Size = new Size(100, 50);
+            pictureBoxAntwortC.Size = new Size(186, 107);
             pictureBoxAntwortC.TabIndex = 6;
             pictureBoxAntwortC.TabStop = false;
             // 
             // pictureBoxFrage
             // 
-            pictureBoxFrage.Location = new Point(248, 22);
+            pictureBoxFrage.Location = new Point(625, 44);
+            pictureBoxFrage.Margin = new Padding(6);
             pictureBoxFrage.Name = "pictureBoxFrage";
-            pictureBoxFrage.Size = new Size(100, 50);
+            pictureBoxFrage.Size = new Size(186, 107);
             pictureBoxFrage.TabIndex = 5;
             pictureBoxFrage.TabStop = false;
             // 
             // radioButtonD
             // 
             radioButtonD.AutoSize = true;
-            radioButtonD.Location = new Point(209, 206);
+            radioButtonD.Location = new Point(469, 439);
+            radioButtonD.Margin = new Padding(6);
             radioButtonD.Name = "radioButtonD";
-            radioButtonD.Size = new Size(33, 19);
+            radioButtonD.Size = new Size(62, 36);
             radioButtonD.TabIndex = 4;
             radioButtonD.TabStop = true;
             radioButtonD.Text = "D";
@@ -215,9 +232,10 @@
             // radioButtonC
             // 
             radioButtonC.AutoSize = true;
-            radioButtonC.Location = new Point(209, 110);
+            radioButtonC.Location = new Point(469, 235);
+            radioButtonC.Margin = new Padding(6);
             radioButtonC.Name = "radioButtonC";
-            radioButtonC.Size = new Size(33, 19);
+            radioButtonC.Size = new Size(60, 36);
             radioButtonC.TabIndex = 3;
             radioButtonC.TabStop = true;
             radioButtonC.Text = "C";
@@ -226,9 +244,10 @@
             // radioButtonB
             // 
             radioButtonB.AutoSize = true;
-            radioButtonB.Location = new Point(16, 206);
+            radioButtonB.Location = new Point(30, 439);
+            radioButtonB.Margin = new Padding(6);
             radioButtonB.Name = "radioButtonB";
-            radioButtonB.Size = new Size(32, 19);
+            radioButtonB.Size = new Size(59, 36);
             radioButtonB.TabIndex = 2;
             radioButtonB.TabStop = true;
             radioButtonB.Text = "B";
@@ -237,9 +256,10 @@
             // radioButtonA
             // 
             radioButtonA.AutoSize = true;
-            radioButtonA.Location = new Point(15, 110);
+            radioButtonA.Location = new Point(28, 235);
+            radioButtonA.Margin = new Padding(6);
             radioButtonA.Name = "radioButtonA";
-            radioButtonA.Size = new Size(33, 19);
+            radioButtonA.Size = new Size(60, 36);
             radioButtonA.TabIndex = 1;
             radioButtonA.TabStop = true;
             radioButtonA.Text = "A";
@@ -248,18 +268,20 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(16, 42);
+            label10.Location = new Point(30, 90);
+            label10.Margin = new Padding(6, 0, 6, 0);
             label10.Name = "label10";
-            label10.Size = new Size(39, 15);
+            label10.Size = new Size(78, 32);
             label10.TabIndex = 0;
             label10.Text = "Frage:";
             // 
             // Form3
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(415, 349);
+            ClientSize = new Size(898, 745);
             Controls.Add(groupBox1);
+            Margin = new Padding(6);
             Name = "Form3";
             Text = "Form3";
             groupBox1.ResumeLayout(false);

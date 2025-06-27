@@ -1,0 +1,45 @@
+Projekt: Dominick Steblau, Quiz
+
+Beschreibung:  
+Quiz ist eine Windows Forms Anwendung zum spielerischen Lernen von Ländern, Hauptstädten und Flaggen. Die Spieler können verschiedene Quiztypen (z.B. Land anhand der Flagge erraten, Hauptstadt anhand des Landes erraten, etc.) und Kontinente auswählen, Punkte sammeln und ihre Ergebnisse einsehen. Die Anwendung verwendet eine MySQL-Datenbank zur Speicherung von Benutzern, Fragen und Ergebnissen.
+
+Datenbank:  
+Die Anwendung nutzt eine MySQL-Datenbank mit folgenden Tabellen:
+- `benutzer` (Benutzerdaten)
+- `geodaten` (Kontinent, Land, Hauptstadt, Flagge)
+- `quiz` (punkte und Highscores der benutzer)
+- `antwort` (Frage und Geodaten)
+- `frage` (Fragetyp, Frageinhalt)
+
+Datenbank einrichten:  
+1. Öffne ein Datenbank-Tool (z.B. MySQL Workbench, MySQL...).
+2. Erstelle eine neue Datenbank, z.B. `datenbank`.
+3. Importiere die Datei `dump.sql` in diese datenbank.
+
+Verbindung konfigurieren:  
+Passe ggf. den Connection String in der Anwendung an: 
+"SERVER=localhost; UID='root';PASSWORD='';DATABASE=Quiz"; 
+
+
+Installation und Ausführung:  
+1. Projektdateien von GitHub clonen oder entpacken.
+2. Öffne die `Quiz.sln`-Datei in Visual Studio.
+3. Passe den Connection String in `Datenbank.cs` oder `App.config` an wenn nötig.
+4. Projekt kompilieren.
+5. Anwendung starten ("Starten ohne Debugging").
+
+Dateiübersicht:  
+- `QuizSoftware.sln` – Projektmappe  
+- `Form1.cs` – Login- und Startformular  
+- `Form2.cs` – Quizauswahl und Punktübersicht  
+- `Form3.cs` – Quiz (Hauptstadt/Land/Flagge)  
+- `Form4.cs` – Flaggenquiz  
+- `Form5.cs` – Land-zu-Flagge-Quiz  
+- `Datenbank.cs` – Datenbankzugriff  
+- `quizsoftware.sql` – SQL-Skript zur Erstellung der Datenbank  
+- `config.ini` – Konfigurationsdatei für Standardwerte  
+- `*.Designer.cs` – Layoutdefinitionen  
+- `*.resx` – Ressourcen (z.B. Texte, Bilder)
+
+Hinweis:  
+Die Flaggenbilder müssen im Verzeichnis `C:\Flaggen\` abgelegt werden, damit sie im Quiz angezeigt werden.
