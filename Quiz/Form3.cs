@@ -253,10 +253,11 @@ namespace Quiz
             {
                 MessageBox.Show("Falsch! Die richtige Antwort ist: " + frage.RichtigeAntwort);
             }
-            radioButtonA.Checked = false;
+            /*radioButtonA.Checked = false;
             radioButtonB.Checked = false;
             radioButtonC.Checked = false;
             radioButtonD.Checked = false;
+            */
 
             //zur naechsten frage
             aktuelleFrage++;
