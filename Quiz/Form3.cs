@@ -134,12 +134,6 @@ namespace Quiz
             antworten = antworten.OrderBy(x => rnd.Next()).ToList();
 
 
-            // DEBUG: Zeige Antworten
-            string antwortenText = string.Join(", ", antworten);
-            MessageBox.Show($"DEBUG: Antworten: {antwortenText}");
-
-
-
             //pruefen ob flaggen als antwort angezeigt werden muesssen
             if (spielmodus.EndsWith("_zu_Flagge"))
             {
@@ -176,9 +170,7 @@ namespace Quiz
 
 
         private void zeigeFlaggenAntworten(List<string> antworten)
-        {
-            MessageBox.Show("DEBUG: zeigeFlaggenAntworten wurde aufgerufen!");
-
+        { 
 
             //text labels deaktivieren
             labelAntwortA.Visible = false;
@@ -210,12 +202,6 @@ namespace Quiz
         {
             string flaggenDatei = flaggenPfad + landName + ".png";
 
-            // ERWEITERTE DEBUG-AUSGABE
-            MessageBox.Show($"DEBUG Info:\n" +
-                           $"Übergebener Landname: '{landName}'\n" +
-                           $"Konstruierter Pfad: '{flaggenDatei}'\n" +
-                           $"Datei existiert: {File.Exists(flaggenDatei)}\n" +
-                           $"Flaggen-Ordner existiert: {Directory.Exists(flaggenPfad)}");
 
             if (File.Exists(flaggenDatei))
             {
