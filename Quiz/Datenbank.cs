@@ -148,19 +148,19 @@ namespace Quiz
                             richtigeAntwort = reader.GetString("land");
                             break;
 
-                        case "Flagge_zuLand":
+                        case "Flagge_zu_Land":
                             fragetext = "Zu welchem Land gehoert diese Flagge?";
                             richtigeAntwort = reader.GetString("land");
                             break;
 
                         case "Land_zu_Flagge":
                             fragetext = "Welche Flagge gehoert zu " + reader.GetString("land") + "?";
-                            richtigeAntwort = reader.GetString("flagge");
+                            richtigeAntwort = reader.GetString("land");
                             break;
 
-                        case "Hauptstad_zu_Flagge":
+                        case "Hauptstadt_zu_Flagge":
                             fragetext = "Welche Flagge gehoert zur Hauptstadt " + reader.GetString("hauptstadt") + "?";
-                            richtigeAntwort = reader.GetString("flagge");
+                            richtigeAntwort = reader.GetString("land");
                             break;
 
                         case "Flagge_zu_Hauptstadt":
@@ -235,7 +235,7 @@ namespace Quiz
                 }
                 else
                 { 
-                    spalte = "flagge";
+                    spalte = "land";
                 }
 
                 string query = "";
@@ -244,7 +244,7 @@ namespace Quiz
                     query = string.Format("SELECT {0} FROM geodaten WHERE {0} != '{1}' ORDER BY RAND() LIMIT 3",
                         spalte, frage.RichtigeAntwort);
                 }
-                else
+    
                 {
                     query = string.Format("SELECT {0} FROM geodaten WHERE {0} != '{1}' AND kontinent = '{2}' ORDER BY RAND() LIMIT 3",
                         spalte, frage.RichtigeAntwort, region);
@@ -325,6 +325,31 @@ namespace Quiz
             conn.Close();
             return highscores;
         }
+
+
+        public int getGeoDatenID(string landName)
+        {
+            conn.Open();
+            int geodatenID = 0;
+            try
+            {
+                MySqlCommand cmd = conn.CreateCommand();
+                cmd.CommandText = string.Format("SELECT GeoDatenID FROM geodaten WHERE land = '{0}'", landName);
+                object result = cmd.ExecuteScalar();
+
+                if (result != DBNull.Value && result != null)
+                {
+                    geodatenID = Convert.ToInt32(result);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            conn.Close();
+            return geodatenID;
+        }
+
 
 
 
