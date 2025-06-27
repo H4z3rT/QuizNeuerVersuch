@@ -132,6 +132,13 @@ namespace Quiz
 
         private void zeigeTextAntworten(List<string> antworten)
         {
+            // DEBUG: Diese Zeilen temporär hinzufügen
+            MessageBox.Show($"Anzahl Antworten: {antworten.Count}");
+            for (int i = 0; i < antworten.Count; i++)
+            {
+                MessageBox.Show($"Antwort {i}: '{antworten[i]}'");
+            }
+
             //pictureBoxes ausblenden
             pictureBoxAntwortA.Visible = false;
             pictureBoxAntwortB.Visible = false;
@@ -181,6 +188,10 @@ namespace Quiz
         {
             string flaggenDatei = flaggenPfad + landName + ".png";
 
+            // DEBUG: Diese Zeilen temporär hinzufügen
+            MessageBox.Show($"Suche nach Datei: {flaggenDatei}");
+            MessageBox.Show($"Datei existiert: {File.Exists(flaggenDatei)}");
+            
             if (File.Exists(flaggenDatei))
             {
                 pictureBox.Image = Image.FromFile(flaggenDatei);
