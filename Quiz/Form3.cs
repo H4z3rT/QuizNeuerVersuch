@@ -73,6 +73,8 @@ namespace Quiz
             radioButtonC.AutoCheck = true;
             radioButtonD.AutoCheck = true;
 
+
+
             if (aktuelleFrage >= fragen.Count)
             {
                 beendeQuiz();
@@ -81,35 +83,25 @@ namespace Quiz
 
             QuizFrage frage = fragen[aktuelleFrage];
 
+            //frage in labelFrage anzeigen
+            labelFrage.Text = frage.Fragetext;
+
+            //flagge anzeigen wenn spielmodus flagge beinhaltet
             if (spielmodus.StartsWith("Flagge_"))
             {
-                // Für Flagge_zu_Land und Flagge_zu_Hauptstadt: Zeige die Flagge aus der Datenbank
-                if (frage.Flagge != null && frage.Flagge.Length > 0)
+                string flaggenDatei = flaggenPfad + frage.RichtigeAntwort + ".png";
+                if (File.Exists(flaggenDatei))
                 {
-                    try
-                    {
-                        using (MemoryStream ms = new MemoryStream(frage.Flagge))
-                        {
-                            pictureBoxFrage.Image = Image.FromStream(ms);
-                            pictureBoxFrage.SizeMode = PictureBoxSizeMode.StretchImage;
-                            pictureBoxFrage.Visible = true;
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Fehler beim Laden der Flagge: {ex.Message}");
-                        pictureBoxFrage.Visible = false;
-                    }
+                    pictureBoxFrage.Image = Image.FromFile(flaggenDatei);
+                    pictureBoxFrage.SizeMode = PictureBoxSizeMode.StretchImage;
+                    pictureBoxFrage.Visible = true;
                 }
-                else
+                else 
                 {
-                    pictureBoxFrage.Visible = false;
+                    pictureBoxFrage.Visible = false;  
                 }
             }
             else
-            {
-                pictureBoxFrage.Visible = false;
-            }
             {
                 pictureBoxFrage.Visible = false;
             }
@@ -125,7 +117,7 @@ namespace Quiz
             Random rnd = new Random();
             antworten = antworten.OrderBy(x => rnd.Next()).ToList();
 
-            //pruefen ob flaggen als antwort angezeigt werden muessen
+            //pruefen ob flaggen als antwort angezeigt werden muesssen
             if (spielmodus.EndsWith("_zu_Flagge"))
             {
                 zeigeFlaggenAntworten(antworten);
@@ -140,7 +132,6 @@ namespace Quiz
 
         private void zeigeTextAntworten(List<string> antworten)
         {
-
             //pictureBoxes ausblenden
             pictureBoxAntwortA.Visible = false;
             pictureBoxAntwortB.Visible = false;
@@ -172,58 +163,33 @@ namespace Quiz
             //flaggen fuer antworten laden
             aktuelleFlaggenAntworten = new List<string>(antworten);
 
-            if(antworten.Count >= 4)
-                {
-                //flaggen laden und in pictureBoxes anzeigen
-                ladeFlaggeInPictureBox(antworten[0], pictureBoxAntwortA);
-                ladeFlaggeInPictureBox(antworten[1], pictureBoxAntwortB);
-                ladeFlaggeInPictureBox(antworten[2], pictureBoxAntwortC);
-                ladeFlaggeInPictureBox(antworten[3], pictureBoxAntwortD);
+            //flaggen laden und in pictureBoxes anzeigen
+            ladeFlaggeInPictureBox(antworten[0], pictureBoxAntwortA);
+            ladeFlaggeInPictureBox(antworten[1], pictureBoxAntwortB);
+            ladeFlaggeInPictureBox(antworten[2], pictureBoxAntwortC);
+            ladeFlaggeInPictureBox(antworten[3], pictureBoxAntwortD);
 
-                //pictureBoxes sichtbar machen
-                pictureBoxAntwortA.Visible = true;
-                pictureBoxAntwortB.Visible = true;
-                pictureBoxAntwortC.Visible = true;
-                pictureBoxAntwortD.Visible = true;
-            }
+            //pictureBoxes sichtbar machen
+            pictureBoxAntwortA.Visible = true;
+            pictureBoxAntwortB.Visible = true;
+            pictureBoxAntwortC.Visible = true;
+            pictureBoxAntwortD.Visible = true;
 
         }
 
         private void ladeFlaggeInPictureBox(string landName, PictureBox pictureBox)
         {
-            try
-            {
-                // Versuche zuerst aus Datenbank zu laden
-                int geodatenID = db.getGeoDatenID(landName);
-                if (geodatenID > 0)
-                {
-                    byte[] flaggenDaten = db.getFlagge(geodatenID);
-                    if (flaggenDaten != null && flaggenDaten.Length > 0)
-                    {
-                        using (MemoryStream ms = new MemoryStream(flaggenDaten))
-                        {
-                            pictureBox.Image = Image.FromStream(ms);
-                            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-                            return;
-                        }
-                    }
-                }
+            string flaggenDatei = flaggenPfad + landName + ".png";
 
-                // Fallback: Versuche aus Dateisystem zu laden
-                string flaggenDatei = flaggenPfad + landName + ".png";
-                if (File.Exists(flaggenDatei))
-                {
-                    pictureBox.Image = Image.FromFile(flaggenDatei);
-                    pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-                }
-                else
-                {
-                    pictureBox.Image = null;
-                }
-            }
-            catch (Exception ex)
+
+            if (File.Exists(flaggenDatei))
             {
-                MessageBox.Show($"Fehler beim Laden der Flagge für {landName}: {ex.Message}");
+                pictureBox.Image = Image.FromFile(flaggenDatei);
+                pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            }
+            else
+            {
+                //wenn flagge nicht gefunden wurde
                 pictureBox.Image = null;
             }
         }
